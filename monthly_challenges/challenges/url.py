@@ -3,5 +3,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("<month>", views.monthly_challenges)
+     # this is done to have a main page where we get list of options of what months we can choose from 
+    # this will be used in case for /challenge/ as there is nothing after this!
+    path("", views.index),
+    path("<int:month>", views.monthly_no_challenge),
+    path("<str:month>", views.monthly_challenges, name="apple_potato"),
+    path("aim", views.weekly_challenge)
 ]
