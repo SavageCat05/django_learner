@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-from django.urls import reverse 
+from django.urls import reverse
 from django.template.loader import render_to_string
 
 all_months = {
@@ -48,9 +48,12 @@ all_months = {
 def monthly_challenges(request, month):
     try:
         challenge_status = all_months[month]
-        response_data = render_to_string("challenges/challenge.html")
+        return render(request, "challenges/challenge.html", {
+            "text": challenge_status, "mymonth": month
+        })
+        # response_data = render_to_string("challenges/challenge.html")
         # return HttpResponse(f"<h1>{challenge_status}</h1>")
-        return HttpResponse(f"{response_data}")
+        # return HttpResponse(f"{response_data}")
     except:
         return HttpResponseNotFound("<h1>Not a valid month</h1>")
 
@@ -62,18 +65,19 @@ def monthly_no_challenge(request, month):
     if 1 <= month <= 12:
         months = list(all_months.keys())  # converting it to a list
         redirect_month = months[month-1]
-        absolute_path = reverse("apple_potato", args = [redirect_month]) # Note:
+        absolute_path = reverse("apple_potato", args=[redirect_month])  # Note:
         return HttpResponseRedirect(absolute_path)
     # an important factor is that exact wese ka wesa ana chahiye
     elif month > len(month):
         return HttpResponseNotFound("Not a valid month")
 
-def get_list_of_months(dict_a:dict):
-    str_a = "" 
+
+def get_list_of_months(dict_a: dict):
+    str_a = ""
     months = list(dict_a.keys())
-    for i in range(1,len(months)):
+    for i in range(1, len(months)):
         redirect_month = months[i-1]
-        absolute_path = reverse("apple_potato", args = [redirect_month])
+        absolute_path = reverse("apple_potato", args=[redirect_month])
         str_a += f"<li><a href = '{absolute_path}'>{redirect_month}</a></li>"
     return str_a
     # correct the lower part!!
@@ -83,19 +87,23 @@ def get_list_of_months(dict_a:dict):
     #     str_a += f"<li><a href = \"{reverse("originalo", month)}\">{month}</a></li>"
     # return str_a
 
+
+# def index(request):
+
+#     response_str = f"""<ul>
+#     {get_list_of_months(all_months)}
+#     </ul>
+#     """
+#     # response_list = """<ul>
+#     # <li><a href = "/challenges/january">Wu shang clan</a></li>
+#     # </ul>"""
+#     return HttpResponse(response_str)
+
+
 def index(request):
-
-    response_str = f"""<ul>
-    {get_list_of_months(all_months)}
-    </ul>
-    """
-    # response_list = """<ul>
-    # <li><a href = "/challenges/january">Wu shang clan</a></li>
-    # </ul>"""
-    return HttpResponse(response_str)
-
-# def weekly_challenge(request):
-# use render_to_string here :>
+    list1 = list(all_months.keys())
+    months = list(map(lambda x : x.capitalize(), list1))
+    return render(request, "challenges/index.html", {"list_of_months": months})
 
 
 
