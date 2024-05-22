@@ -14,8 +14,8 @@ all_months = {
     "august": "for everyday of this month, Aj mei udega!",
     "september": "for everyday of this month, Aj mei udega!",
     "october": "for everyday of this month, Aj mei udega!",
-    "november": "for everyday of this month, Aj mei udega!",
-    "december": "for everyday of this month, Aj mei udega!",
+    "november": None,
+    "december": None,
 }
 
 # Create your views here.
@@ -101,8 +101,9 @@ def get_list_of_months(dict_a: dict):
 
 
 def index(request):
-    list1 = list(all_months.keys())
-    months = list(map(lambda x : x.capitalize(), list1))
+    # list1 = list(all_months.keys())
+    # months = list(map(lambda x : x.capitalize(), list1))
+    months = list(all_months.keys())
     return render(request, "challenges/index.html", {"list_of_months": months})
 
 
