@@ -48,7 +48,9 @@ all_months = {
 def monthly_challenges(request, month):
     try:
         challenge_status = all_months[month]
-        return HttpResponse(f"<h1>{challenge_status}</h1>")
+        response_data = render_to_string("challenges/challenge.html")
+        # return HttpResponse(f"<h1>{challenge_status}</h1>")
+        return HttpResponse(f"{response_data}")
     except:
         return HttpResponseNotFound("<h1>Not a valid month</h1>")
 
@@ -93,3 +95,7 @@ def index(request):
     return HttpResponse(response_str)
 
 # def weekly_challenge(request):
+# use render_to_string here :>
+
+
+
