@@ -22,15 +22,13 @@ all_months = {
 
 def monthly_challenges(request, month):
     try:
-        print("goes in")
         challenge_status = all_months[month]
-        print("here also")
         return render(request, "challenges/challenge.html", {
             "text": challenge_status, "mymonth": month
         })
     except:
-        print("Except statement is called here !")
-        return HttpResponseNotFound("<h1>Not a valid month</h1>")
+        no_response = render_to_string('404.html')
+        return HttpResponseNotFound(no_response)
 
 
 def get_list_of_months(dict_a: dict):
