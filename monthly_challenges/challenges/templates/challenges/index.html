@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
-{% block pagetitle %}
+
+{% block page_title %}
   All challenges
-{% endblock %}\{% block content %}
+{% endblock %}
+{% block content %}
   <ul>
     {% for month in list_of_months %}
       <li>
         <a href="{% url 'apple_potato' month %}">{{ month|title }}</a>
-        {% comment %} <a href="/challenges/{{ month }}">{{ month|title }}</a> {% endcomment %}
-      </li> <!-- Creates a dynamic case -->
+      </li>
     {% endfor %}
   </ul>
 {% endblock %}

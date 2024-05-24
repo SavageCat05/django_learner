@@ -18,58 +18,19 @@ all_months = {
     "december": None,
 }
 
-# Create your views here.
 
-# the challenge was when to call this index function and when will python know to call it
-
-
-# def january(request):
-#     return HttpResponse("Eat meat everyday for this month")  # line 2 above unstantiates this object("HttpResponse")
-
-# def february(request):
-#     return HttpResponse("Walk for atleast 20 minutes every day!")
-
-# def december(request):
-#     return
-
-# search why month:str or month:int did not work !!
-# def monthly_challenges(request, month):
-#     challenge_status = None
-#     if month == "january":
-#         challenge_status = "Eat meat everyday for this month"
-#     elif month == "february":
-#         challenge_status = "Walk for atleast 20 minutes every day!"
-#     elif month == "march":
-#         challenge_status = "for everyday of this month, Aj mei udega!"
-#     else:
-#         return HttpResponseNotFound("Service is not supported for this month")
-#     return HttpResponse(challenge_status)
 
 def monthly_challenges(request, month):
     try:
+        print("goes in")
         challenge_status = all_months[month]
+        print("here also")
         return render(request, "challenges/challenge.html", {
             "text": challenge_status, "mymonth": month
         })
-        # response_data = render_to_string("challenges/challenge.html")
-        # return HttpResponse(f"<h1>{challenge_status}</h1>")
-        # return HttpResponse(f"{response_data}")
     except:
+        print("Except statement is called here !")
         return HttpResponseNotFound("<h1>Not a valid month</h1>")
-
-# def monthly_no_challenge(request, month):
-#     return HttpResponse(month)
-
-
-def monthly_no_challenge(request, month):
-    if 1 <= month <= 12:
-        months = list(all_months.keys())  # converting it to a list
-        redirect_month = months[month-1]
-        absolute_path = reverse("apple_potato", args=[redirect_month])  # Note:
-        return HttpResponseRedirect(absolute_path)
-    # an important factor is that exact wese ka wesa ana chahiye
-    elif month > len(month):
-        return HttpResponseNotFound("Not a valid month")
 
 
 def get_list_of_months(dict_a: dict):
@@ -79,32 +40,19 @@ def get_list_of_months(dict_a: dict):
         redirect_month = months[i-1]
         absolute_path = reverse("apple_potato", args=[redirect_month])
         str_a += f"<li><a href = '{absolute_path}'>{redirect_month}</a></li>"
-    return str_a
-    # correct the lower part!!
-
-    # str_a = ""
-    # for month in dict_a:
-    #     str_a += f"<li><a href = \"{reverse("originalo", month)}\">{month}</a></li>"
-    # return str_a
-
-
-# def index(request):
-
-#     response_str = f"""<ul>
-#     {get_list_of_months(all_months)}
-#     </ul>
-#     """
-#     # response_list = """<ul>
-#     # <li><a href = "/challenges/january">Wu shang clan</a></li>
-#     # </ul>"""
-#     return HttpResponse(response_str)
+    return HttpResponse(str_a)
 
 
 def index(request):
-    # list1 = list(all_months.keys())
-    # months = list(map(lambda x : x.capitalize(), list1))
     months = list(all_months.keys())
     return render(request, "challenges/index.html", {"list_of_months": months})
 
+def month_challenge_by_number(request, month):
+    months = list(all_months.keys())
 
-
+    if month>len(months):
+        return HttpResponse("Invalid Month")
+    
+    redirected_month = month[month - 1]
+    redirect_path = reverse('apple_potato', arg = [redirected_month])
+    return HttpResponseRedirect(redirect_path)
