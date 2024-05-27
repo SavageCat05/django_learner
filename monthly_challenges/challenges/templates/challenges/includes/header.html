@@ -1,8 +1,11 @@
+{% load static %}
+
 <header>
     <nav>
         <a href = "{% url 'index' %}">All challenges</a>
     </nav>
+    <link rel = "stylesheet" href = "{% static 'challenges/includes/header.css' %}">
 </header>
 
 
-{{active_page}}
+{% comment %} {{active_page}} {% endcomment %}
