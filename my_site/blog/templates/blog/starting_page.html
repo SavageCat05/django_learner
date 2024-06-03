@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  First Page!
+{% endblock %}
+
+{% block css_styles %}
+  <link rel="stylesheet" href="{% static 'blog/starting_page.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <header id="main-navigation">
+    <h1><a href="">Anshuman' blog</a></h1>
+    <nav>
+      <a href="">All Posts</a>
+    </nav>
+  </header>
+  <section id="welcome">
+    <header>
+      <img src="{% static 'blog/images/Anshuman_profile.jpg' %}" alt="Anshuman - the author of this blog" />
+      <h2>Anshuman's Blog</h2>
+    </header>
+
+    <p>Hi! I am Anshuman. I am learning Django !!</p>
+  </section>
+
+  <section id="latest-posts">
+    <h2>My latest Thoughts</h2>
+
+    <ul>
+      <li>
+        <article class="posts">
+          <a href="">
+            <img src="{% static 'blog/images/mountains.jpg' %}" alt="Mountain-Hicking" />
+            <div class="post__content">
+              <h3>Mountain-Hicking</h3>
+              <p>There is it great view at the top of the mountain. But, I saw something really...</p>
+            </div>
+          </a>
+        </article>
+      </li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>What do I do?</h2>
+    <p>I am a student at nsut aspiring to become a data scientist. I am a slow but effective learner!</p>
+    <p>My goal is to keep on learning and learning till I become one of the greatest mind of this world</p>
+  </section>
+{% endblock %}
