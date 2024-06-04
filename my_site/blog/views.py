@@ -7,7 +7,7 @@ def starting_page(request):
     return render(request, 'blog/starting_page.html')
 
 def post(request):
-    pass
+    return render(request, 'blog/all-posts.html')
 
-def selected_post(request):
-    pass
+def selected_post(request, slug):
+    return render(request, 'blog/post-detail.html')

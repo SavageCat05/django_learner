@@ -46,21 +46,13 @@
   text-align: center;
 }
 
-#latest-posts :hover, latest-posts :active{
-  background-color:  #6305dd;
-  color:white;
-}
-
 #latest-posts ul {
-  text-align: center;
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   gap: 1rem;
 }
-
-
 
 #latest-posts li {
   flex: 1;
