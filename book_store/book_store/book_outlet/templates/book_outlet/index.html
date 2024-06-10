@@ -1,3 +1,12 @@
 {% extends 'book_outlet/base.html'%}
 
-{% block %}
+{% block title %} Main Page {% endblock %}
+
+{%block content %}
+<h2> We have a total of {{no_of_books}} books, with avg rating = {{avg_rating.rating__avg}}
+    <ul>
+        {% for book in books%}
+            <a href = "{% url 'page_detail' book.sluged_url %}"><li>{{book.title}}</a>, rating is: ({{book.rating}})</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
