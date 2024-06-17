@@ -1,3 +1,42 @@
+{% extends 'reviews/base.html'%}
+
+{% block title %} Your Review {% endblock %}
+
+{% block content %}
+<form method = "post">
+    {% if invalid_form %}
+        <p>Please enter a valid form</p>
+    {% endif %}
+    {% csrf_token %}
+     <label for = "username">Your Name: </label>
+    <input type = "text" name = "username" id = "username">
+     
+    {{ form }}
+    <button>Send</button>
+</form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment  %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -13,10 +52,11 @@
         {% comment %} {% if invalid_form %}
             <p>Please enter a valid form</p>
         {% endif %} {% endcomment %}
+        {% comment %}
         {% csrf_token %}
-        {% comment %} <label for = "username">Your Name: </label>
+         <label for = "username">Your Name: </label>
         <input type = "text" name = "username" id = "username">
-         {% endcomment %}
+         
         {{ form }}
         <button>Send</button>
 
@@ -24,3 +64,4 @@
 </body>
 </html>
 </html>
+{% endcomment %}
