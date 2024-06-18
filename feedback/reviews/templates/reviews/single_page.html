@@ -1,0 +1,10 @@
+{% extends './base.html'%}
+
+{% block title%} {{username}}'s defiance {% endblock%} 
+
+{% block content %}
+<h1>{{object.username}}<h1>
+<h4> Rating is: {{object.rating}} </h4>
+<p>About text : {{object.your_review}} </p>
+
+{% endblock %}

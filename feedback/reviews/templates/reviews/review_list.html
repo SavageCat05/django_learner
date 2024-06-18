@@ -1,0 +1,11 @@
+{% extends './base.html' %}
+
+{% block title %} ALL views till now {% endblock %}
+
+{% block content %}
+<ul>
+{% for item in review_list %}
+    <li><a href="{% url "more_detail" item.pk %}">{{item.username}}</a>({{item.rating}})</li>
+{% endfor %}
+
+{% endblock %}
