@@ -148,3 +148,11 @@ class list_of_items(ListView):
 class single_pageView(DetailView):
     template_name = "reviews/single_page.html"
     model = review
+
+
+class AddFavoriteView(View):
+    def post(self, request):
+        review_id = request.POST['review_id']
+        fav_review = review.objects.all(review_id)
+        request.session["favorite_review"] = fav_review
+        return HttpResponseRedirect("/reviews/"+ review_id)

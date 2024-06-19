@@ -6,5 +6,9 @@
 <h1>{{object.username}}<h1>
 <h4> Rating is: {{object.rating}} </h4>
 <p>About text : {{object.your_review}} </p>
-
+<form actions = "/reviews/favorite" method = "POST">
+    {% csrf_token %}
+    <input type = "hidden" name = "review_id" value = "{{ review.id }}">
+    <button>Favorities</button>
+</form>
 {% endblock %}
