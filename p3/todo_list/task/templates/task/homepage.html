@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List!</title>
+    <link rel = "stylesheet" href = "{% static "task/homepage.css" %}"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  </head>
+  <body>
+<header>
+  {% if user.is_authenticated %}
+  <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container-fluid">
+        <div>
+            <ul class = "navbar-nav">
+                <li class = "nav-item">
+                    <a class = "nav-link" href = "{% url "homepage" %}">Home</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul class = "navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class = "nav-item">     
+                        <a class = "nav-link" href = "{% url "logout" %}">Log out</a>
+                    </li>
+                {% else %}
+                    <li class = "nav-item">     
+                        <a class = "nav-link" href = "{% url "frontpage" %}">Login</a> {%comment%} /members/login_user {% endcomment%}
+                    </li>
+                    <li class = "nav-item">     
+                        <a class = "nav-link" href = "{% url "sign_up" %}">Register!</a> {%comment%} /members/login_user {% endcomment%}
+                    </li>
+                {% endif %}
+            </ul>
+        <div>
+    </div>
+</nav>
+</header>
+
+
+  <div class="parent">
+    <div class="headblock">
+      <h1>Pending Tasks</h1> <!--add text-shadow--> 
+    </div>
+
+    <section class="task_table">
+    <table>
+      <tr>
+        <th>Task</th>
+        <th>Priority</th>
+        <th>Due-Date</th>
+        <th>Detail</th>
+        <th>Remove</th>
+        {% for task1 in all_tasks %}
+          <tr>
+            <td>{{ task1.task_title }}</td>
+            <td>{{ task1.task_priority }}</td>
+            <td>{{ task1.task_due_date }}</td>
+            <td>{{ task1.task_detail }}</td>
+            {% comment %} {% url "remove_task" task1.pk %} {% endcomment %}
+            {% comment %} <td>{{ task1.pk}}</td> ~~this send gets the id of a particluar field {% endcomment %}
+            {% comment %} <td><a href = "{% url"remove_task" task1.pk %}"><input type = "button" value="remove task"></a></td>   {% endcomment %}
+            <td><a href = "{% url "remove_task" task1.pk %}">remove task</a></td> {% comment%}{% url "remove_task/"|add:task1.pk %}{% endcomment %}
+          </tr>
+        {% endfor %}
+      </tr>
+    </table>
+    </section "add_task_htm">
+    <div class = "div_add_task_htm"><a href = "add_task">Add Task</a></div>
+    <section>
+    {% else %}
+      <h1>You have to log in to access the contents of this webpage!</h1>
+      <a href = "{% url "frontpage"%}"  class="link-light">Click me</a>
+    {% endif %}
+    </div>
+  </body>
+</html>

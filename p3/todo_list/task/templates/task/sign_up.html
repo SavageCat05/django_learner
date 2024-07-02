@@ -1,0 +1,89 @@
+{% extends 'task/base.html' %}
+
+{% block content%}
+
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+{% endfor %}    
+{% endif %}
+
+<br/>
+<div class = "shadow p-4 mb-5 bg-body rounded">
+<h1> Welcome! </h1>
+<pre>We are pleased to have you!
+You can register to our website by filling in the form below!
+</pre>
+
+
+<br/>
+
+    <form action = "{% url 'sign_up'%}" method = "POST">
+            {% csrf_token %}
+
+            {{form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel = "stylesheet" rel = "{% static "task/sign_up.css" %}">
+</head>
+<body>
+    <div class = "headblock">
+        <h2>Welcome!</h2>
+        <p>fill your details carefully. you won't able to edit your username and phone number later </p>
+        </div>
+        <section class = "form_fill">
+            <form method = "POST">
+                {% csrf_token %}
+                {{ form }}
+                <input class = "submit-button" type = "submit" value="Sign up">
+            </form>
+        </section>
+</body>
+</html>
+ {% endcomment %}

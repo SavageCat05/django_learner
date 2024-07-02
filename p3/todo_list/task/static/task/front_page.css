@@ -1,0 +1,70 @@
+*{
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: url('../images/sign_in_right_1.jpg') fixed no-repeat;
+    background-size: cover;
+    height: 100svh;
+    width: 100svw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parent{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    
+}
+
+.left-child{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(245, 245, 220,0.3);
+    width: 50%;
+    gap: 10px;
+}
+
+.left-child h2{
+    color: black;
+    text-align: center;
+}
+
+.left-child input{
+    width: 80%;
+    height: 20px;
+    border: none;
+    outline: none;
+    padding-left: 5px;
+    font-weight: 500px;
+    color: #666;
+    border-radius: 15px;
+    margin: 5px 0px;
+    box-shadow: black;
+}
+
+.right-child{
+    background-color: rgba(0, 128, 0, 0.05);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    gap: 8px;
+}
+
+.right-child button{
+    border: none;
+    outline: none;
+    background-color: white;
+    color: #666;
+    padding: 4px;
+    border-radius: 15px;
+}

@@ -1,0 +1,9 @@
+*{
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: url('../images/sign_up_background.jpg');
+}

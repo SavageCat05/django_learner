@@ -1,0 +1,84 @@
+{% extends 'task/base.html' %}
+
+{% block content%}
+
+<br/>
+<br/>
+<div class = "shadow p-4 mb-5 bg-body rounded">
+
+<h1> Log in </h1>
+<br/>
+    <form action = "" method = "POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="Username" class="form-label">Username:</label>
+              <input type="text" class="form-control" id = "Username" name="username" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id = "password" name = "password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+{% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'task/base.html' %}
+{% load static %}
+
+{% block title %}
+  Welcome
+{% endblock %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'task/front_page.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="parent">
+    <div class="left-child">
+      <h2>Login In</h2>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="Username" class="form-label">Username:</label>
+          <input type="text" class="form-control" id="Username" name="username" aria-describedby="emailHelp" />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %} {% endcomment %}

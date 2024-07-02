@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header li, header a{
+    text-decoration: none;
+    list-style: none;
+}
+
+.parent {
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #23865c55, #23865c );
+    width: 100svw;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.headblock {
+    min-height: 10%;
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 20px;
+}
+
+.task_table{
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: rgba(138, 136, 136, 0.15);
+    backdrop-filter: blur(2px);
+    text-align: center;
+    max-width: 85%;
+    max-height: 80%;
+    text-decoration: none;  
+}
+
+.task_table:hover {
+    transition: all 0.3s ease 0s;
+    background-color: rgba(255, 255, 255, 0.4);   
+    /* background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */
+    backdrop-filter: blur(2px);
+    
+}
+
+.task_table th {
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.task_table th,
+.task_table td {
+    padding: 10px 20px;
+}
+
+.task_table a{
+    text-decoration: none;
+    color: rgb(85, 85, 85);
+
+}
+.task_table a:hover {
+    color: rgb(26, 26, 26);
+    text-decoration: underline rgb(26, 26, 26);
+    transition: all 0.3s ease 0s;
+}
+
+
+.div_add_task_htm {
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: rgba(167, 166, 166, 0.15);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    margin-top: 2rem;
+    width: 20%;
+    height: 5%;
+    text-decoration: none;
+    color: rgb(85, 85, 85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_add_task_htm a, .task_table a{
+    text-decoration: none;
+}
+
+
+.div_add_task_htm:hover{
+    background-color: rgba(255, 255, 255, 0.4);   
+    /* background: rgb(238,174,202); */
+    /* background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */
+    backdrop-filter: blur(2px);
+    transition: all 0.3s ease 0s;
+}
+
+.div_add_task_htm a:visited{
+    text-decoration: none;
+    color: rgb(85, 85, 85) ;
+}
+.div_add_task_htm a:hover{
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+    transition: all 0.3s ease 0s;
+}
+
+
+/* decorate this url */
+
+/* #remove_url:hover{
+    text-decoration: none;
+    color: green;
+} */
